@@ -8,7 +8,7 @@ module.exports = {
       name: "@storybook/addon-styling",
       options: {
         sass: {
-          implementation: require("node-sass"),
+          implementation: require("sass"),
         },
       },
     },
