@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";
 import "../../styles/carbon-theme.scss";
+import styles from "./NumberInput.module.scss";
 
 const NumberInputCarbon = (props) => {
   const { onChange, value, id, testId, label, isRequired, min, invalidText } =
@@ -18,15 +19,17 @@ const NumberInputCarbon = (props) => {
   const title = label && <Title text={label} isRequired={isRequired} />;
 
   return (
-    <NumberInput
-      data-testid={testId}
-      id={id}
-      onChange={handleChange}
-      min={min}
-      value={value || 0}
-      invalidText={invalidText}
-      label={title}
-    />
+    <div className={styles.numberInput}>
+      <NumberInput
+        data-testid={testId}
+        id={id}
+        onChange={handleChange}
+        min={min}
+        value={value || 0}
+        invalidText={invalidText}
+        label={title}
+      />
+    </div>
   );
 };
 

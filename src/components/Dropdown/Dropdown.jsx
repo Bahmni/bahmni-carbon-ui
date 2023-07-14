@@ -1,9 +1,6 @@
-import { disable } from "./Dropdown.module.scss";
 import React, { useEffect, useRef } from "react";
-import classNames from "classnames";
-import { PropTypes } from "prop-types";
+import PropTypes from "prop-types";
 import { injectIntl } from "react-intl";
-import { isUndefined } from "lodash";
 import { ComboBox } from "carbon-components-react";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";
@@ -20,6 +17,7 @@ const Dropdown = (props) => {
     autoFocus,
     isRequired,
     width,
+    titleText,
   } = props;
   const filterItems = (data) => {
     return data.item.label
@@ -34,15 +32,10 @@ const Dropdown = (props) => {
   const handleOnChange = (selected) => {
     onChange(selected.selectedItem);
   };
-  const isComponentDisabled = () =>
-    isUndefined(isDisabled) ? false : isDisabled;
-  const title = <Title text={placeholder} isRequired={isRequired} />;
+  const title = <Title text={titleText} isRequired={isRequired} />;
 
   return (
-    <div
-      data-testid="select"
-      className={classNames(isComponentDisabled() ? disable : "")}
-    >
+    <div data-testid="select">
       <ComboBox
         id={id}
         ref={dropdownRef}
@@ -72,4 +65,5 @@ Dropdown.propTypes = {
   autoFocus: PropTypes.bool,
   width: PropTypes.string,
   id: PropTypes.string,
+  titleText: PropTypes.string,
 };

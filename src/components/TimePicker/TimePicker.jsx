@@ -11,10 +11,8 @@ import "../../styles/carbon-conflict-fixes.scss";
 import "../../styles/carbon-theme.scss";
 import Title from "../Title/Title.jsx";
 
-const AppointmentTimePicker = (props) => {
+const TimePickerCarbon = (props) => {
   const {
-    timePickerId,
-    timePickerSelectId,
     intl,
     onChange,
     defaultTime,
@@ -22,7 +20,6 @@ const AppointmentTimePicker = (props) => {
     defaultTranslationKey,
     isDisabled,
     isRequired,
-    timePickerSelectLabel,
   } = props;
   const key = intl.formatMessage({
     id: translationKey,
@@ -52,7 +49,7 @@ const AppointmentTimePicker = (props) => {
 
   return (
     <TimePicker
-      id={timePickerId}
+      id={"time-selector"}
       labelText={title}
       onBlur={handleChange}
       value={time}
@@ -61,8 +58,8 @@ const AppointmentTimePicker = (props) => {
       disabled={isDisabled}
     >
       <TimePickerSelect
-        id={timePickerSelectId}
-        labelText={timePickerSelectLabel}
+        id={"time-picker-select-1"}
+        labelText={"Choose a time"}
         onChange={handlePeriod}
         value={period}
         disabled={isDisabled}
@@ -74,7 +71,7 @@ const AppointmentTimePicker = (props) => {
   );
 };
 
-AppointmentTimePicker.propTypes = {
+TimePickerCarbon.propTypes = {
   intl: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
   defaultTranslationKey: PropTypes.string,
@@ -88,4 +85,4 @@ AppointmentTimePicker.propTypes = {
   timePickerSelectLabel: PropTypes.string,
 };
 
-export default injectIntl(AppointmentTimePicker);
+export default injectIntl(TimePickerCarbon);

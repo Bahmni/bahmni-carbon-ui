@@ -58,7 +58,7 @@ DatePickerCarbon.propTypes = {
   testId: PropTypes.string,
   isDisabled: PropTypes.bool,
   isRequired: PropTypes.bool,
-  minDate: PropTypes.object,
+  minDate: PropTypes.string,
   value: PropTypes.object,
   placeholder: PropTypes.string,
   id: PropTypes.string,
