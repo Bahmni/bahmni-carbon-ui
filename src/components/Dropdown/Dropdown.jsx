@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
 import { ComboBox } from "carbon-components-react";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";
@@ -53,7 +52,7 @@ const Dropdown = (props) => {
   );
 };
 
-export default injectIntl(Dropdown);
+export default Dropdown;
 
 Dropdown.propTypes = {
   options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),

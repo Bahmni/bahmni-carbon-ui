@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "./Title.module.scss";
+import "./Title.scss";
 import PropTypes from "prop-types";
 
 const Title = (props) => {
   const { text, isRequired } = props;
   return (
-    <div className={styles.title}>
+    <div className="titleText">
       <span>{text + " "}</span>
-      {isRequired && <span className={styles.required}>*</span>}
+      {isRequired && <span className="required">*</span>}
     </div>
   );
 };

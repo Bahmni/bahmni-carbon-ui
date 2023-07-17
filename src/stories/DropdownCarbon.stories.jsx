@@ -1,5 +1,5 @@
 import React from "react";
-import Dropdown from "../components/DropdownCarbon/Dropdown.jsx";
+import Dropdown from "../components/DropdownCarbon/DropdownCarbon.jsx";
 import { IntlProvider } from "react-intl";
 
 export default {

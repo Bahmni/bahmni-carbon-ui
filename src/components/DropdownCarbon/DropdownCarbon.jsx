@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { injectIntl } from "react-intl";
 import { Dropdown } from "carbon-components-react";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";
@@ -20,7 +19,11 @@ const DropdownCarbon = (props) => {
   } = props;
   const title = titleText && <Title text={titleText} isRequired={isRequired} />;
   return (
-    <div data-testid="select dropdown" style={{ marginRight: "5px" }}>
+    <div
+      className="dropdown"
+      data-testid="select dropdown"
+      style={{ marginRight: "5px" }}
+    >
       <Dropdown
         id={id}
         items={options}
@@ -35,7 +38,7 @@ const DropdownCarbon = (props) => {
   );
 };
 
-export default injectIntl(DropdownCarbon);
+export default DropdownCarbon;
 
 DropdownCarbon.propTypes = {
   options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),

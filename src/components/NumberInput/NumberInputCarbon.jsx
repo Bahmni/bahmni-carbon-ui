@@ -7,8 +7,17 @@ import "../../styles/carbon-theme.scss";
 import styles from "./NumberInput.module.scss";
 
 const NumberInputCarbon = (props) => {
-  const { onChange, value, id, testId, label, isRequired, min, invalidText } =
-    props;
+  const {
+    onChange,
+    value,
+    id,
+    testId,
+    label,
+    isRequired,
+    min,
+    invalidText,
+    isDisabled,
+  } = props;
   const handleChange = (event, carbonEvent, value) => {
     if (typeof carbonEvent === "object") {
       onChange(+carbonEvent.value);
@@ -28,6 +37,7 @@ const NumberInputCarbon = (props) => {
         value={value || 0}
         invalidText={invalidText}
         label={title}
+        disabled={isDisabled}
       />
     </div>
   );
@@ -42,6 +52,7 @@ NumberInputCarbon.propTypes = {
   isRequired: PropTypes.bool,
   min: PropTypes.number,
   invalidText: PropTypes.string,
+  isDisabled: PropTypes.bool,
 };
 
 export default NumberInputCarbon;

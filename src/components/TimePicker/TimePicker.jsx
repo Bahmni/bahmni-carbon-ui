@@ -6,26 +6,13 @@ import {
 import moment from "moment";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
-import { injectIntl } from "react-intl";
 import "../../styles/carbon-conflict-fixes.scss";
 import "../../styles/carbon-theme.scss";
 import Title from "../Title/Title.jsx";
 
 const TimePickerCarbon = (props) => {
-  const {
-    intl,
-    onChange,
-    defaultTime,
-    translationKey,
-    defaultTranslationKey,
-    isDisabled,
-    isRequired,
-  } = props;
-  const key = intl.formatMessage({
-    id: translationKey,
-    defaultMessage: defaultTranslationKey,
-  });
-  let title = <Title text={key} isRequired={isRequired} />;
+  const { onChange, defaultTime, labelText, isDisabled, isRequired } = props;
+  let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00", "AM"];
   if (defaultTime) {
     timeStamp = moment(defaultTime).format("h:mm A").split(" ");
@@ -72,10 +59,7 @@ const TimePickerCarbon = (props) => {
 };
 
 TimePickerCarbon.propTypes = {
-  intl: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired,
-  defaultTranslationKey: PropTypes.string,
-  translationKey: PropTypes.string,
   defaultTime: PropTypes.object,
   isDisabled: PropTypes.bool,
   width: PropTypes.string,
@@ -83,6 +67,7 @@ TimePickerCarbon.propTypes = {
   timePickerId: PropTypes.string,
   timePickerSelectId: PropTypes.string,
   timePickerSelectLabel: PropTypes.string,
+  labelText: PropTypes.string,
 };
 
-export default injectIntl(TimePickerCarbon);
+export default TimePickerCarbon;
