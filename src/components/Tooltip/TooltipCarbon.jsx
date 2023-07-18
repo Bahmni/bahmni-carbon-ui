@@ -4,16 +4,17 @@ import PropTypes from "prop-types";
 import "../../styles/carbon-conflict-fixes.scss";
 import "../../styles/carbon-theme.scss";
 
-export default function TooltipCarbon(props) {
-  const { content, Icon } = props;
+export function TooltipCarbon(props) {
+  const { content, icon } = props;
+
   return (
-    <Tooltip align="start" renderIcon={Icon}>
+    <Tooltip align="start" renderIcon={icon}>
       {content}
     </Tooltip>
   );
 }
 
 TooltipCarbon.propTypes = {
-  content: PropTypes.string.isRequired,
-  Icon: PropTypes.element,
+  content: PropTypes.element.isRequired,
+  icon: PropTypes.element,
 };
