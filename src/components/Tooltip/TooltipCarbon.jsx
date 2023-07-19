@@ -15,6 +15,6 @@ export function TooltipCarbon(props) {
 }
 
 TooltipCarbon.propTypes = {
-  content: PropTypes.element.isRequired,
+  content: PropTypes.string.isRequired,
   icon: PropTypes.element,
 };
