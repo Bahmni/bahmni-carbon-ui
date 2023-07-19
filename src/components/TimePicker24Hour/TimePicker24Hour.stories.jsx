@@ -1,6 +1,5 @@
-import React from "react";
-import { IntlProvider } from "react-intl";
 import moment from "moment";
+import React from "react";
 import TimePicker24Hour from "./TimePicker24Hour.jsx";
 
 export default {
@@ -9,15 +8,13 @@ export default {
 
 export const Primary = () => {
   return (
-    <IntlProvider locale={"en"}>
-      <TimePicker24Hour
-        onChange={() => {}}
-        labelText={"Start Time"}
-        isRequired={true}
-        translationKey={"APPOINTMENT_TIME_FROM_LABEL"}
-        defaultTranslationKey={"Start Time"}
-        defaultTime={moment()}
-      />
-    </IntlProvider>
+    <TimePicker24Hour
+      onChange={() => {}}
+      labelText={"Start Time"}
+      isRequired={true}
+      translationKey={"APPOINTMENT_TIME_FROM_LABEL"}
+      defaultTranslationKey={"Start Time"}
+      defaultTime={moment()}
+    />
   );
 };

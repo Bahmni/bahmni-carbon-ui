@@ -1,3 +1,5 @@
+import React from "react";
+import { IntlProvider } from "react-intl";
 import "../src/styles/styles.scss";
 
 export const parameters = {
@@ -9,3 +11,9 @@ export const parameters = {
     },
   },
 };
+
+const withIntlProvider = (storyFn) => {
+  return <IntlProvider locale="en">{storyFn()}</IntlProvider>;
+};
+
+export const decorators = [withIntlProvider];
