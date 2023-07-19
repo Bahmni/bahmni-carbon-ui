@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, render } from "@testing-library/react";
-import TooltipCarbon from "./TooltipCarbon";
+import { TooltipCarbon } from "./TooltipCarbon";
 
 describe("TooltipCarbon", () => {
   it("matches snapshot", () => {
