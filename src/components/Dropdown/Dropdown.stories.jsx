@@ -1,21 +1,24 @@
 import React from "react";
-import DatePickerCarbon from "../components/DatePickerCarbon/DatePickerCarbon.jsx";
+import Dropdown from "./Dropdown.jsx";
 import { IntlProvider } from "react-intl";
-import moment from "moment";
 
 export default {
-  title: "Date Picker",
+  title: "Combo box",
 };
 
 export const Primary = () => {
   return (
     <IntlProvider locale={"en"}>
-      <DatePickerCarbon
+      <Dropdown
         id={"Dropdown"}
         onChange={() => {}}
         titleText={"Dropdown"}
-        minDate={moment().format("MM-DD-YYYY")}
-        title={"Start Date"}
+        placeholder={"Select an item"}
+        options={[
+          { value: "item1", label: "Item 1" },
+          { value: "item2", label: "Item 2" },
+          { value: "item3", label: "Item 3" },
+        ]}
       />
     </IntlProvider>
   );

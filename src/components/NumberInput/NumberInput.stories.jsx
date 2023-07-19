@@ -1,5 +1,5 @@
 import React from "react";
-import NumberInputCarbon from "../components/NumberInput/NumberInputCarbon.jsx";
+import NumberInputCarbon from "./NumberInputCarbon.jsx";
 import { IntlProvider } from "react-intl";
 
 export default {

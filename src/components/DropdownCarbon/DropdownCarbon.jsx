@@ -38,8 +38,6 @@ const DropdownCarbon = (props) => {
   );
 };
 
-export default DropdownCarbon;
-
 DropdownCarbon.propTypes = {
   options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   placeholder: PropTypes.string,
@@ -51,3 +49,5 @@ DropdownCarbon.propTypes = {
   isDisabled: PropTypes.bool,
   label: PropTypes.string,
 };
+
+export default DropdownCarbon;

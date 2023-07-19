@@ -52,8 +52,6 @@ const Dropdown = (props) => {
   );
 };
 
-export default Dropdown;
-
 Dropdown.propTypes = {
   options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   placeholder: PropTypes.string,
@@ -66,3 +64,5 @@ Dropdown.propTypes = {
   id: PropTypes.string,
   titleText: PropTypes.string,
 };
+
+export default Dropdown;

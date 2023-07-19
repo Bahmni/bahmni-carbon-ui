@@ -1,5 +1,5 @@
 import React from "react";
-import Title from "../components/Title/Title.jsx";
+import Title from "./Title.jsx";
 
 export default {
   title: "Title",

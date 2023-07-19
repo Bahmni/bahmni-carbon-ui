@@ -1,19 +1,19 @@
 import React from "react";
+import TimePickerCarbon from "./TimePicker.jsx";
 import { IntlProvider } from "react-intl";
 import moment from "moment";
-import TimePicker24Hour from "../components/TimePicker24Hour/TimePicker24Hour.jsx";
 
 export default {
-  title: "Time Picker 24 hour",
+  title: "Time Picker with AM and PM",
 };
 
 export const Primary = () => {
   return (
     <IntlProvider locale={"en"}>
-      <TimePicker24Hour
-        onChange={() => {}}
+      <TimePickerCarbon
         labelText={"Start Time"}
         isRequired={true}
+        onChange={() => {}}
         translationKey={"APPOINTMENT_TIME_FROM_LABEL"}
         defaultTranslationKey={"Start Time"}
         defaultTime={moment()}

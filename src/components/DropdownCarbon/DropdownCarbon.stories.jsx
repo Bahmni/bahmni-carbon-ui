@@ -1,9 +1,9 @@
 import React from "react";
-import Dropdown from "../components/Dropdown/Dropdown.jsx";
+import Dropdown from "./DropdownCarbon.jsx";
 import { IntlProvider } from "react-intl";
 
 export default {
-  title: "Combo box",
+  title: "DropDown",
 };
 
 export const Primary = () => {
@@ -13,7 +13,7 @@ export const Primary = () => {
         id={"Dropdown"}
         onChange={() => {}}
         titleText={"Dropdown"}
-        placeholder={"Select an item"}
+        label={"Select an item"}
         options={[
           { value: "item1", label: "Item 1" },
           { value: "item2", label: "Item 2" },
