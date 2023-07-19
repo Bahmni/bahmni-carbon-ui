@@ -1,5 +1,6 @@
 import "./styles/styles.scss";
 export * from "./components/TestComp.jsx";
+export * from "./components/Tooltip/TooltipCarbon.jsx";
 export { default as DatePickerCarbon } from "./components/DatePickerCarbon/DatePickerCarbon.jsx";
 export { default as Dropdown } from "./components/Dropdown/Dropdown.jsx";
 export { default as DropdownCarbon } from "./components/DropdownCarbon/DropdownCarbon.jsx";
