@@ -1,6 +1,6 @@
 {
   "name": "bahmni-carbon-ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Next generation ui components for OpenMRS and Bahmni built using the Carbon design system",
   "main": "dist/index.js",
   "author": "bahmni@thoughtworks.com",
@@ -37,7 +37,10 @@
     "@storybook/react": "6.5",
     "carbon-components": "^10.19.0",
     "carbon-components-react": "^7.25.0",
-    "carbon-icons": "^7.0.7"
+    "carbon-icons": "^7.0.7",
+    "moment": "^2.29.4",
+    "prop-types": "^15.8.1",
+    "react-intl": "^6.4.4"
   },
   "peerDependencies": {
     "react": "16.14.0",
