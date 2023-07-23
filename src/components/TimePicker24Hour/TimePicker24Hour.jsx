@@ -37,10 +37,11 @@ const TimePicker24Hour = (props) => {
   };
 
   const handleChange = (e) => {
-    if (isValidTime(e.target.value)) {
+    const newTime = e.target.value;
+    if (isValidTime(newTime)) {
       setWarning(false);
-      setTime(e.target.value);
-      onChange(time);
+      setTime(newTime);
+      onChange(newTime);
     } else {
       setWarning(true);
     }
