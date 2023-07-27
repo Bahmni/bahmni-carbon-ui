@@ -8,3 +8,4 @@ export { default as NumberInputCarbon } from "./components/NumberInput/NumberInp
 export { default as TimePicker } from "./components/TimePicker/TimePicker.jsx";
 export { default as TimePicker24Hour } from "./components/TimePicker24Hour/TimePicker24Hour.jsx";
 export { default as Title } from "./components/Title/Title.jsx";
+export * from "./components/NotificationCarbon/NotificationCarbon.jsx";

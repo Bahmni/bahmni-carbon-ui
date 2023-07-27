@@ -29,14 +29,14 @@ const TimePickerCarbon = (props) => {
     timeStamp[1] !== undefined ? timeStamp[1] : "AM"
   );
   const [warning, setWarning] = useState(false);
-  let warningText = invalidText || "Please enter a valid time in hh:mm format";
+  let warningText = invalidText || "Please enter a valid time in 12-hr format";
   useEffect(() => {
     setTime(timeStamp[0] || "");
     setPeriod(timeStamp[1] || "AM");
   }, [defaultTime]);
 
   const isValidTime = (newTime) => {
-    const timeRegex = /^([01][0-9]|2[0-3]):[0-5][0-9]$/;
+    const timeRegex = /^((1[0-2]|0?[1-9]):[0-5][0-9])$/;
     if (timeRegex.test(newTime)) {
       return true;
     }
@@ -45,12 +45,15 @@ const TimePickerCarbon = (props) => {
 
   const handleChange = (e) => {
     const newTime = e.target.value;
+    const selectedTime =
+      newTime === "" ? "" : moment(newTime + period, "h:mm A");
     if (isValidTime(newTime)) {
       setWarning(false);
-      const selectedTime = moment(newTime + period, "h:mm A");
-      setTime(newTime);
-      onChange(selectedTime);
-    } else setWarning(true);
+    } else {
+      setWarning(true);
+    }
+    setTime(newTime);
+    onChange(selectedTime);
   };
 
   const handlePeriod = (e) => {
