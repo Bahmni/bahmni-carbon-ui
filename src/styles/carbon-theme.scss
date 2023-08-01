@@ -97,6 +97,11 @@ $css--body: false;
 .bx--tooltip__label .bx--tooltip__trigger {
   margin-left: 0;
 }
+[class*="bx--tooltip"] {
+  &:focus {
+    outline: none !important;
+  }
+}
 .bx--tooltip {
   color: #fff;
   font-size: 12px;
