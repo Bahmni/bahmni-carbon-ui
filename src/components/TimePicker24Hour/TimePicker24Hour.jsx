@@ -21,7 +21,7 @@ const TimePicker24Hour = (props) => {
   const [warning, setWarning] = useState(false);
   let warningText = invalidText || "Please enter a valid time in 24-hr format";
   if (defaultTime) {
-    timeStamp = moment(defaultTime, "HH:mm").format("HH:mm");
+    timeStamp = defaultTime;
   }
   const [time, setTime] = useState(timeStamp);
   useEffect(() => {
