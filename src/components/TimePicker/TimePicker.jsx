@@ -11,27 +11,62 @@ import "../../styles/carbon-theme.scss";
 import Title from "../Title/Title.jsx";
 
 const TimePickerCarbon = (props) => {
-  const { onChange, defaultTime, labelText, isDisabled, isRequired } = props;
+  const {
+    onChange,
+    defaultTime,
+    labelText,
+    isDisabled,
+    isRequired,
+    invalidText,
+  } = props;
   let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00", "AM"];
   if (defaultTime) {
-    timeStamp = moment(defaultTime).format("h:mm A").split(" ");
+    timeStamp = moment(defaultTime).format("hh:mm A").split(" ");
   }
   const [time, setTime] = useState(timeStamp[0]);
-  const [period, setPeriod] = useState(timeStamp[1]);
+  const [period, setPeriod] = useState(
+    timeStamp[1] !== undefined ? timeStamp[1] : "AM"
+  );
+  const [warning, setWarning] = useState(false);
+  let warningText = invalidText || "Please enter a valid time in 12-hr format";
   useEffect(() => {
     setTime(timeStamp[0] || "");
-    setPeriod(timeStamp[1]);
+    setPeriod(timeStamp[1] || "AM");
   }, [defaultTime]);
+
+  const isValidTime = (newTime) => {
+    const timeRegex = /^((1[0-2]|0?[1-9]):[0-5][0-9])$/;
+    if (timeRegex.test(newTime)) {
+      return true;
+    }
+    return false;
+  };
+
   const handleChange = (e) => {
-    const selectedTime = moment(e.target.value + period, "h:mm A");
-    setTime(e.target.value);
+    const newTime = e.target.value;
+    const selectedTime =
+      newTime === "" ? "" : moment(newTime + period, "h:mm A");
+    if (isValidTime(newTime)) {
+      setWarning(false);
+    } else {
+      setWarning(true);
+    }
+    setTime(newTime);
     onChange(selectedTime);
   };
+
   const handlePeriod = (e) => {
-    const selectedTime = moment(time + e.target.value + period, "h:mm A");
-    setPeriod(e.target.value);
-    onChange(selectedTime);
+    const newPeriod = e.target.value;
+    if (isValidTime(time)) {
+      setWarning(false);
+      setPeriod(newPeriod);
+      const selectedTime = moment(time + newPeriod, "h:mm A");
+      onChange(selectedTime);
+    } else {
+      setWarning(true);
+      setPeriod(newPeriod);
+    }
   };
 
   return (
@@ -43,6 +78,8 @@ const TimePickerCarbon = (props) => {
       style={{ width: "72px", padding: "0 0 0 1rem" }}
       autoComplete={"off"}
       disabled={isDisabled}
+      invalid={warning}
+      invalidText={warningText}
     >
       <TimePickerSelect
         id={"time-picker-select-1"}
@@ -68,6 +105,7 @@ TimePickerCarbon.propTypes = {
   timePickerSelectId: PropTypes.string,
   timePickerSelectLabel: PropTypes.string,
   labelText: PropTypes.string,
+  invalidText: PropTypes.string,
 };
 
 export default TimePickerCarbon;

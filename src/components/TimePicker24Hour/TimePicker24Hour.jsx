@@ -19,9 +19,9 @@ const TimePicker24Hour = (props) => {
   let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00"];
   const [warning, setWarning] = useState(false);
-  let warningText = invalidText || "Please enter a valid time in hh:mm format";
+  let warningText = invalidText || "Please enter a valid time in 24-hr format";
   if (defaultTime) {
-    timeStamp = moment(defaultTime, "HH:mm").format("HH:mm");
+    timeStamp = defaultTime;
   }
   const [time, setTime] = useState(timeStamp);
   useEffect(() => {
@@ -37,13 +37,18 @@ const TimePicker24Hour = (props) => {
   };
 
   const handleChange = (e) => {
-    if (isValidTime(e.target.value)) {
+    const displayTime = e.target.value;
+    const newTime =
+      moment(displayTime, "HH:mm", true).format("HH:mm") !== "Invalid date"
+        ? moment(displayTime, "HH:mm", true).format("HH:mm")
+        : displayTime;
+    if (isValidTime(newTime)) {
       setWarning(false);
-      setTime(e.target.value);
-      onChange(time);
     } else {
       setWarning(true);
     }
+    setTime(newTime);
+    onChange(newTime);
   };
 
   return (
