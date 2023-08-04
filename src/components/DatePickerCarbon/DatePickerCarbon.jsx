@@ -28,7 +28,7 @@ const DatePickerCarbon = (props) => {
   }
   let titleText = title && <Title text={title} isRequired={isRequired} />;
   return (
-    <div data-testid={testId || "datePicker"}>
+    <div data-testid={testId || "datePicker"} className="date-picker-carbon">
       <DatePicker
         datePickerType={datePickerType || "single"}
         onChange={onChange}
