@@ -14,7 +14,7 @@ export const Primary = () => {
       isRequired={true}
       translationKey={"APPOINTMENT_TIME_FROM_LABEL"}
       defaultTranslationKey={"Start Time"}
-      defaultTime={moment()}
+      defaultTime={moment().format("HH:mm")}
     />
   );
 };
