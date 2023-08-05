@@ -39,10 +39,7 @@ const TimePicker24Hour = (props) => {
 
   const handleChange = async (e) => {
     const displayTime = e.target.value;
-    console.log("displayTime = ", displayTime);
     const newTime = moment(displayTime, "HH:mm").format("HH:mm");
-    console.log("newTime = ", newTime);
-    console.log("momentized time = ", moment(newTime, "HH:mm").format("HH:mm"));
     if (isValidTime(newTime)) {
       setWarning(false);
       setTime(newTime);

@@ -36,7 +36,8 @@ const TimePickerCarbon = (props) => {
   }, [defaultTime]);
 
   const isValidTime = (newTime) => {
-    const timeRegex = /^((1[0-2]|0?[1-9]):[0-5][0-9])$/;
+    if (newTime === "Invalid date") return false;
+    const timeRegex = /^((1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM))$/;
     if (timeRegex.test(newTime)) {
       return true;
     }
@@ -45,23 +46,30 @@ const TimePickerCarbon = (props) => {
 
   const handleChange = (e) => {
     const newTime = e.target.value;
-    const selectedTime =
-      newTime === "" ? "" : moment(newTime + period, "h:mm A");
-    if (isValidTime(newTime)) {
+    const selectedTime = moment(newTime + period, "hh:mm A").format("hh:mm A");
+    if (isValidTime(selectedTime)) {
       setWarning(false);
+      setTime(moment(selectedTime, "hh:mm A").format("hh:mm"));
+      if (
+        period !==
+        moment(selectedTime, "hh:mm A").format("hh:mm A").split(" ")[1]
+      )
+        setPeriod(
+          moment(selectedTime, "hh:mm A").format("hh:mm A").split(" ")[1]
+        );
     } else {
       setWarning(true);
+      setTime("");
     }
-    setTime(newTime);
     onChange(selectedTime);
   };
 
   const handlePeriod = (e) => {
     const newPeriod = e.target.value;
-    if (isValidTime(time)) {
+    const selectedTime = moment(time + newPeriod, "hh:mm A").format("hh:mm A");
+    if (isValidTime(selectedTime)) {
       setWarning(false);
       setPeriod(newPeriod);
-      const selectedTime = moment(time + newPeriod, "h:mm A");
       onChange(selectedTime);
     } else {
       setWarning(true);
