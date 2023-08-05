@@ -37,7 +37,7 @@ const TimePicker24Hour = (props) => {
     return false;
   };
 
-  const handleChange = async (e) => {
+  const handleChange = (e) => {
     const displayTime = e.target.value;
     const newTime = moment(displayTime, "HH:mm").format("HH:mm");
     if (isValidTime(newTime)) {
