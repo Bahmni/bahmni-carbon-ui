@@ -29,6 +29,7 @@ const TimePicker24Hour = (props) => {
   }, [defaultTime]);
 
   const isValidTime = (newTime) => {
+    if (newTime === "Invalid date") return false;
     const timeRegex = /^([01][0-9]|2[0-3]):[0-5][0-9]$/;
     if (timeRegex.test(newTime)) {
       return true;
@@ -38,16 +39,14 @@ const TimePicker24Hour = (props) => {
 
   const handleChange = (e) => {
     const displayTime = e.target.value;
-    const newTime =
-      moment(displayTime, "HH:mm", true).format("HH:mm") !== "Invalid date"
-        ? moment(displayTime, "HH:mm", true).format("HH:mm")
-        : displayTime;
+    const newTime = moment(displayTime, "HH:mm").format("HH:mm");
     if (isValidTime(newTime)) {
       setWarning(false);
+      setTime(newTime);
     } else {
       setWarning(true);
+      setTime("");
     }
-    setTime(newTime);
     onChange(newTime);
   };
 
