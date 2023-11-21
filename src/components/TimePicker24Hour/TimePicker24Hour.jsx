@@ -15,6 +15,7 @@ const TimePicker24Hour = (props) => {
     isRequired,
     invalidText,
     width,
+    light = false,
   } = props;
   let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00"];
@@ -31,10 +32,7 @@ const TimePicker24Hour = (props) => {
   const isValidTime = (newTime) => {
     if (newTime === "Invalid date") return false;
     const timeRegex = /^([01][0-9]|2[0-3]):[0-5][0-9]$/;
-    if (timeRegex.test(newTime)) {
-      return true;
-    }
-    return false;
+    return timeRegex.test(newTime);
   };
 
   const handleChange = (e) => {
@@ -61,6 +59,7 @@ const TimePicker24Hour = (props) => {
       disabled={isDisabled}
       invalid={warning}
       invalidText={warningText}
+      light={light}
     ></TimePicker>
   );
 };
@@ -76,6 +75,7 @@ TimePicker24Hour.propTypes = {
   timePickerSelectId: PropTypes.string,
   timePickerSelectLabel: PropTypes.string,
   labelText: PropTypes.string,
+  light: PropTypes.bool,
 };
 
 export default TimePicker24Hour;
