@@ -26,7 +26,6 @@ const TimePicker24Hour = (props) => {
   }
   const [time, setTime] = useState(timeStamp);
   useEffect(() => {
-    console.log("In UseEffect");
     setTime(timeStamp || "00:00");
   }, [defaultTime]);
 
@@ -39,7 +38,6 @@ const TimePicker24Hour = (props) => {
   const handleChange = (e) => {
     const displayTime = e.target.value;
     const newTime = moment(displayTime, "HH:mm").format("HH:mm");
-    console.log("newTime", newTime);
     if (isValidTime(newTime)) {
       setWarning(false);
       setTime(newTime);
@@ -49,7 +47,6 @@ const TimePicker24Hour = (props) => {
     }
     onChange(newTime);
   };
-  console.log("time", time, warning);
 
   return (
     <TimePicker
