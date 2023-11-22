@@ -2,7 +2,10 @@
 
 ## Next Gen UI library for Bahmni
 
-This is the UI component library for Bahmni and OpenMRS, built on top of Carbon Design system.
+This is the UI component library for Bahmni and OpenMRS, built on top of Carbon Design system. <br/>
+If any react component coming from Carbon library needs to be updated based on the requirements of Bahmni, it should be done here.<br/>
+Example: Combobox component of Carbon by default does not filter the options based on the provided input text. <br/>
+So, we have extended the Combobox component of Carbon library and added the filtering functionality as a default so that it can be used across Bahmni.
 
 ### Notes on local link
 
