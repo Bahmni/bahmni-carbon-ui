@@ -19,9 +19,13 @@ const Dropdown = (props) => {
     titleText,
   } = props;
   const filterItems = (data) => {
-    return data.item.label
-      .toLowerCase()
-      .includes(data.inputValue.toLowerCase());
+    if (data.inputValue) {
+      return data.item.label
+        .toLowerCase()
+        .includes(data.inputValue.toLowerCase());
+    } else {
+      return true;
+    }
   };
   const dropdownRef = useRef(null);
   useEffect(() => {
