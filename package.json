@@ -1,6 +1,6 @@
 {
   "name": "bahmni-carbon-ui",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Next generation ui components for OpenMRS and Bahmni built using the Carbon design system",
   "main": "dist/index.js",
   "author": "bahmni@thoughtworks.com",

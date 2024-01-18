@@ -35,6 +35,7 @@ const DatePickerCarbon = (props) => {
         disabled={isDisabled}
         minDate={minDate}
         value={defaultTime}
+        dateFormat={dateFormat || "m/d/Y"}
       >
         <DatePickerInput
           id={id}
