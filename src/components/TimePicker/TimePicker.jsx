@@ -18,6 +18,9 @@ const TimePickerCarbon = (props) => {
     isDisabled,
     isRequired,
     invalidText,
+    customValidation,
+    actionForInvalidTime,
+    invalid,
   } = props;
   let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00", "AM"];
@@ -29,12 +32,19 @@ const TimePickerCarbon = (props) => {
     timeStamp[1] !== undefined ? timeStamp[1] : "AM"
   );
   const [warning, setWarning] = useState(false);
-  let warningText = invalidText || "Please enter a valid time in 12-hr format";
+  const [warningText, setWarningText] =
+    invalidText || "Please enter a valid time in 12-hr format";
   useEffect(() => {
     setTime(timeStamp[0] || "");
     setPeriod(timeStamp[1] || "AM");
   }, [defaultTime]);
+  useEffect(() => {
+    setWarning(invalid);
+  }, [invalid]);
 
+  useEffect(() => {
+    setWarningText(invalidText);
+  }, [invalidText]);
   const isValidTime = (newTime) => {
     if (newTime === "Invalid date") return false;
     const timeRegex = /^((1[0-2]|0?[1-9]):[0-5][0-9] (AM|PM))$/;
@@ -48,7 +58,11 @@ const TimePickerCarbon = (props) => {
     const newTime = e.target.value;
     const selectedTime = moment(newTime + period, "hh:mm A").format("hh:mm A");
     if (isValidTime(selectedTime)) {
-      setWarning(false);
+      if (customValidation) {
+        customValidation(selectedTime);
+      } else {
+        setWarning(false);
+      }
       setTime(moment(selectedTime, "hh:mm A").format("hh:mm"));
       if (
         period !==
@@ -59,6 +73,10 @@ const TimePickerCarbon = (props) => {
         );
     } else {
       setWarning(true);
+      setWarningText(
+        invalidText || "Please enter a valid time in 12-hr format"
+      );
+      actionForInvalidTime && actionForInvalidTime(true);
       setTime("");
     }
     onChange(selectedTime);
@@ -68,11 +86,19 @@ const TimePickerCarbon = (props) => {
     const newPeriod = e.target.value;
     const selectedTime = moment(time + newPeriod, "hh:mm A").format("hh:mm A");
     if (isValidTime(selectedTime)) {
-      setWarning(false);
+      if (customValidation) {
+        customValidation(selectedTime);
+      } else {
+        setWarning(false);
+      }
       setPeriod(newPeriod);
       onChange(selectedTime);
     } else {
       setWarning(true);
+      setWarningText(
+        invalidText || "Please enter a valid time in 12-hr format"
+      );
+      actionForInvalidTime && actionForInvalidTime(true);
       setPeriod(newPeriod);
     }
   };
@@ -114,6 +140,9 @@ TimePickerCarbon.propTypes = {
   timePickerSelectLabel: PropTypes.string,
   labelText: PropTypes.string,
   invalidText: PropTypes.string,
+  customValidation: PropTypes.func,
+  actionForInvalidTime: PropTypes.func,
+  invalid: PropTypes.bool,
 };
 
 export default TimePickerCarbon;
