@@ -21,6 +21,7 @@ const DatePickerCarbon = (props) => {
     datePickerType,
     datePickerInputSize,
     dateFormat,
+    maxDate,
   } = props;
   let defaultTime = value;
   if (value && value instanceof moment) {
@@ -36,6 +37,7 @@ const DatePickerCarbon = (props) => {
         minDate={minDate}
         value={defaultTime}
         dateFormat={dateFormat || "m/d/Y"}
+        maxDate={maxDate}
       >
         <DatePickerInput
           id={id}
@@ -66,6 +68,7 @@ DatePickerCarbon.propTypes = {
   datePickerType: PropTypes.string,
   datePickerInputSize: PropTypes.string,
   dateFormat: PropTypes.string,
+  maxDate: PropTypes.string,
 };
 
 export default DatePickerCarbon;
