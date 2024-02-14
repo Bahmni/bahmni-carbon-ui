@@ -62,7 +62,7 @@ const TimePickerCarbon = (props) => {
         customValidation(selectedTime);
       } else {
         setWarning(false);
-        actionForInvalidTime && actionForInvalidTime(true);
+        actionForInvalidTime && actionForInvalidTime(false);
       }
       setTime(moment(selectedTime, "hh:mm A").format("hh:mm"));
       if (
@@ -91,7 +91,7 @@ const TimePickerCarbon = (props) => {
         customValidation(selectedTime);
       } else {
         setWarning(false);
-        actionForInvalidTime && actionForInvalidTime(true);
+        actionForInvalidTime && actionForInvalidTime(false);
       }
       setPeriod(newPeriod);
       onChange(selectedTime);

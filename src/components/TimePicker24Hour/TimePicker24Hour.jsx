@@ -55,7 +55,7 @@ const TimePicker24Hour = (props) => {
         customValidation(newTime);
       } else {
         setWarning(false);
-        actionForInvalidTime && actionForInvalidTime(true);
+        actionForInvalidTime && actionForInvalidTime(false);
       }
       setTime(newTime);
     } else {
