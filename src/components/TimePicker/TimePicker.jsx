@@ -32,8 +32,9 @@ const TimePickerCarbon = (props) => {
     timeStamp[1] !== undefined ? timeStamp[1] : "AM"
   );
   const [warning, setWarning] = useState(false);
-  const [warningText, setWarningText] =
-    invalidText || "Please enter a valid time in 12-hr format";
+  const [warningText, setWarningText] = useState(
+    invalidText || "Please enter a valid time in 12-hr format"
+  );
   useEffect(() => {
     setTime(timeStamp[0] || "");
     setPeriod(timeStamp[1] || "AM");
