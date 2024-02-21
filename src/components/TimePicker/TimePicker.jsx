@@ -25,11 +25,13 @@ const TimePickerCarbon = (props) => {
   } = props;
   let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00", "AM"];
+  const timeFormatFor12Hr = "hh:mm A";
+  const timeFormat = "hh:mm";
   if (defaultTime) {
-    if (moment(defaultTime).format("hh:mm A") !== "Invalid date") {
-      timeStamp = moment(defaultTime).format("hh:mm A").split(" ");
+    if (moment(defaultTime).format(timeFormatFor12Hr) !== "Invalid date") {
+      timeStamp = moment(defaultTime).format(timeFormatFor12Hr).split(" ");
     } else if (
-      moment(defaultTime).format("hh:mm A") === "Invalid date" &&
+      moment(defaultTime).format(timeFormatFor12Hr) === "Invalid date" &&
       !moment.isMoment(defaultTime)
     ) {
       timeStamp = defaultTime.split(" ");
@@ -67,7 +69,9 @@ const TimePickerCarbon = (props) => {
 
   const handleChange = (e) => {
     const newTime = e.target.value;
-    const selectedTime = moment(newTime + period, "hh:mm A").format("hh:mm A");
+    const selectedTime = moment(newTime + period, timeFormatFor12Hr).format(
+      timeFormatFor12Hr
+    );
     if (isValidTime(selectedTime)) {
       if (customValidation) {
         customValidation(selectedTime);
@@ -75,13 +79,17 @@ const TimePickerCarbon = (props) => {
         setWarning(false);
         actionForInvalidTime && actionForInvalidTime(false);
       }
-      setTime(moment(selectedTime, "hh:mm A").format("hh:mm A"));
+      setTime(moment(selectedTime, timeFormatFor12Hr).format(timeFormat));
       if (
         period !==
-        moment(selectedTime, "hh:mm A").format("hh:mm A").split(" ")[1]
+        moment(selectedTime, timeFormatFor12Hr)
+          .format(timeFormatFor12Hr)
+          .split(" ")[1]
       )
         setPeriod(
-          moment(selectedTime, "hh:mm A").format("hh:mm A").split(" ")[1]
+          moment(selectedTime, timeFormatFor12Hr)
+            .format(timeFormatFor12Hr)
+            .split(" ")[1]
         );
     } else {
       setWarning(true);
@@ -96,7 +104,9 @@ const TimePickerCarbon = (props) => {
 
   const handlePeriod = (e) => {
     const newPeriod = e.target.value;
-    const selectedTime = moment(time + newPeriod, "hh:mm A").format("hh:mm A");
+    const selectedTime = moment(time + newPeriod, timeFormatFor12Hr).format(
+      timeFormatFor12Hr
+    );
     if (isValidTime(selectedTime)) {
       if (customValidation) {
         customValidation(selectedTime);
