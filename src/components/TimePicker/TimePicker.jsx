@@ -21,11 +21,21 @@ const TimePickerCarbon = (props) => {
     customValidation,
     actionForInvalidTime,
     invalid,
+    width,
   } = props;
   let title = <Title text={labelText} isRequired={isRequired} />;
   let timeStamp = []; // = ["12:00", "AM"];
   if (defaultTime) {
-    timeStamp = moment(defaultTime).format("hh:mm A").split(" ");
+    if (moment(defaultTime).format("hh:mm A") !== "Invalid date") {
+      timeStamp = moment(defaultTime).format("hh:mm A").split(" ");
+    } else if (
+      moment(defaultTime).format("hh:mm A") === "Invalid date" &&
+      !moment.isMoment(defaultTime)
+    ) {
+      timeStamp = defaultTime.split(" ");
+    } else {
+      timeStamp = "";
+    }
   }
   const [time, setTime] = useState(timeStamp[0]);
   const [period, setPeriod] = useState(
@@ -65,7 +75,7 @@ const TimePickerCarbon = (props) => {
         setWarning(false);
         actionForInvalidTime && actionForInvalidTime(false);
       }
-      setTime(moment(selectedTime, "hh:mm A").format("hh:mm"));
+      setTime(moment(selectedTime, "hh:mm A").format("hh:mm A"));
       if (
         period !==
         moment(selectedTime, "hh:mm A").format("hh:mm A").split(" ")[1]
@@ -95,7 +105,6 @@ const TimePickerCarbon = (props) => {
         actionForInvalidTime && actionForInvalidTime(false);
       }
       setPeriod(newPeriod);
-      onChange(selectedTime);
     } else {
       setWarning(true);
       setWarningText(
@@ -104,6 +113,7 @@ const TimePickerCarbon = (props) => {
       actionForInvalidTime && actionForInvalidTime(true);
       setPeriod(newPeriod);
     }
+    onChange(selectedTime);
   };
 
   return (
@@ -112,7 +122,7 @@ const TimePickerCarbon = (props) => {
       labelText={title}
       onBlur={handleChange}
       value={time}
-      style={{ width: "72px", padding: "0 0 0 1rem" }}
+      style={{ width: width || "72px", padding: "0 0 0 1rem" }}
       autoComplete={"off"}
       disabled={isDisabled}
       invalid={warning}
