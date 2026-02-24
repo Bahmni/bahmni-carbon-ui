@@ -4,7 +4,7 @@
   "description": "Next generation ui components for OpenMRS and Bahmni built using the Carbon design system",
   "main": "dist/index.js",
   "author": "bahmni@thoughtworks.com",
-  "license": "AGPL-3.0",
+  "license": "MPL-2.0",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.22.4",
     "@babel/preset-env": "^7.22.4",
