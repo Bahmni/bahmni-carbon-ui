@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./NotificationCarbon.scss";
 import { PropTypes } from "prop-types";
-import { InlineNotification } from "carbon-components-react";
+import { InlineNotification } from "@carbon/react";
 
 export function NotificationCarbon(props) {
   const {
@@ -43,7 +43,7 @@ export function NotificationCarbon(props) {
 
 NotificationCarbon.propTypes = {
   showMessage: PropTypes.bool,
-  title: PropTypes.string,
+  title: PropTypes.node,
   onClose: PropTypes.func,
   messageDuration: PropTypes.number,
   lowContrast: PropTypes.bool,
