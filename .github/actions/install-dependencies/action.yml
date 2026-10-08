@@ -13,7 +13,7 @@ runs:
       env:
         NPM_TOKEN: ${{ inputs.NPM_TOKEN }}
       with:
-        node-version: "22.x"
+        node-version: "24.x"
         cache: "yarn"
     - name: 📥 Install dependencies
       shell: bash
