@@ -1,4 +1,4 @@
-import { TimePicker } from "carbon-components-react";
+import { TimePicker } from "@carbon/react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
@@ -47,6 +47,9 @@ const TimePicker24Hour = (props) => {
     return timeRegex.test(newTime);
   };
 
+  // Carbon v11 TimePicker is a fully controlled input
+  const handleInput = (e) => setTime(e.target.value);
+
   const handleChange = (e) => {
     const displayTime = e.target.value;
     const newTime = moment(displayTime, "HH:mm").format("HH:mm");
@@ -73,6 +76,7 @@ const TimePicker24Hour = (props) => {
     <TimePicker
       id={"time-selector"}
       labelText={title}
+      onChange={handleInput}
       onBlur={handleChange}
       value={time === "Invalid date" ? "" : time}
       style={{ width: width || "72px", padding: "0 0 0 1rem" }}
@@ -80,7 +84,7 @@ const TimePicker24Hour = (props) => {
       disabled={isDisabled}
       invalid={warning}
       invalidText={warningText}
-      light={light}
+      {...(light ? { light } : {})}
     ></TimePicker>
   );
 };
