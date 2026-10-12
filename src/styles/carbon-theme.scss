@@ -2,7 +2,10 @@
   $css--default-type: false,
   $css--reset: false,
   $css--body: false,
-  $use-akamai-cdn: true
+  // false (Carbon's default): do not emit @font-face rules that load IBM Plex
+  // from IBM's Akamai CDN. Consumers serve IBM Plex via their own asset
+  // pipeline (required for offline/air-gapped deployments and CSP).
+  $use-akamai-cdn: false
 );
 @use "@carbon/react";
 

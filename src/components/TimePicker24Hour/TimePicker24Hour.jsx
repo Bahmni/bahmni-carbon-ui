@@ -15,7 +15,6 @@ const TimePicker24Hour = (props) => {
     isRequired,
     invalidText,
     width,
-    light = false,
     customValidation,
     actionForInvalidTime,
     invalid,
@@ -84,7 +83,6 @@ const TimePicker24Hour = (props) => {
       disabled={isDisabled}
       invalid={warning}
       invalidText={warningText}
-      {...(light ? { light } : {})}
     ></TimePicker>
   );
 };
@@ -100,7 +98,6 @@ TimePicker24Hour.propTypes = {
   timePickerSelectId: PropTypes.string,
   timePickerSelectLabel: PropTypes.string,
   labelText: PropTypes.string,
-  light: PropTypes.bool,
   customValidation: PropTypes.func,
   actionForInvalidTime: PropTypes.func,
   invalid: PropTypes.bool,
