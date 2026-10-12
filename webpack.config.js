@@ -39,7 +39,18 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [cssExtract.loader, "css-loader", "sass-loader"],
+        use: [
+          cssExtract.loader,
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              api: "modern-compiler",
+              // Carbon's own SCSS still triggers Dart Sass deprecation warnings
+              sassOptions: { quietDeps: true },
+            },
+          },
+        ],
       },
     ],
   },

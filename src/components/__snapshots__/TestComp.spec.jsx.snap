@@ -12,31 +12,32 @@ exports[`TestComp matches snapshot 1`] = `
       Random
     </span>
     <div
-      class="bx--content-switcher"
+      class="cds--content-switcher cds--layout-constraint--size__default-md cds--layout-constraint--size__min-sm cds--layout-constraint--size__max-lg"
       role="tablist"
     >
       <button
         aria-selected="true"
-        class="bx--content-switcher-btn bx--content-switcher--selected"
+        class="cds--content-switcher-btn cds--content-switcher--selected"
         role="tab"
         tabindex="0"
         type="button"
       >
         <span
-          class="bx--content-switcher__label"
+          class="cds--content-switcher__label"
+          title="Hello"
         >
           Hello
         </span>
       </button>
       <button
         aria-selected="false"
-        class="bx--content-switcher-btn"
+        class="cds--content-switcher-btn"
         role="tab"
         tabindex="-1"
         type="button"
       >
         <span
-          class="bx--content-switcher__label"
+          class="cds--content-switcher__label"
           title="Two"
         >
           Two

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Dropdown } from "carbon-components-react";
+import { Dropdown } from "@carbon/react";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";
 import "../../styles/carbon-theme.scss";

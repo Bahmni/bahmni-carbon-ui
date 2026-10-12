@@ -7,14 +7,28 @@ describe("TooltipCarbon", () => {
     const { getComputedStyle } = window;
     window.getComputedStyle = (elt) => getComputedStyle(elt);
   });
-  it("matches snapshot", () => {
+  it("shows the content when the trigger is clicked", () => {
     const { container, getByText } = render(
       <TooltipCarbon content="TestContent" />
     );
-    expect(
-      container.getElementsByClassName("bx--tooltip__label").length
-    ).toEqual(1);
-    fireEvent.click(container.querySelector(".bx--tooltip__trigger"));
+    const trigger = container.querySelector(".cds--toggletip-button");
+    expect(trigger).toBeTruthy();
+    fireEvent.click(trigger);
     expect(getByText("TestContent")).toBeTruthy();
+    expect(
+      container
+        .querySelector(".cds--toggletip")
+        .classList.contains("cds--toggletip--open")
+    ).toBe(true);
+  });
+
+  it("renders a custom icon passed as a component", () => {
+    const { getByTestId } = render(
+      <TooltipCarbon
+        content="TestContent"
+        icon={() => <span data-testid="custom-icon" />}
+      />
+    );
+    expect(getByTestId("custom-icon")).toBeTruthy();
   });
 });

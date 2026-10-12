@@ -1,5 +1,5 @@
 import React from "react";
-import { NumberInput } from "carbon-components-react";
+import { NumberInput } from "@carbon/react";
 import PropTypes from "prop-types";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";

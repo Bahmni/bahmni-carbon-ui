@@ -1,8 +1,4 @@
-import {
-  SelectItem,
-  TimePicker,
-  TimePickerSelect,
-} from "carbon-components-react";
+import { SelectItem, TimePicker, TimePickerSelect } from "@carbon/react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
@@ -39,7 +35,7 @@ const TimePickerCarbon = (props) => {
       timeStamp = "";
     }
   }
-  const [time, setTime] = useState(timeStamp[0]);
+  const [time, setTime] = useState(timeStamp[0] || "");
   const [period, setPeriod] = useState(
     timeStamp[1] !== undefined ? timeStamp[1] : "AM"
   );
@@ -66,6 +62,9 @@ const TimePickerCarbon = (props) => {
     }
     return false;
   };
+
+  // Carbon v11 TimePicker is a fully controlled input
+  const handleInput = (e) => setTime(e.target.value);
 
   const handleChange = (e) => {
     const newTime = e.target.value;
@@ -130,6 +129,7 @@ const TimePickerCarbon = (props) => {
     <TimePicker
       id={"time-selector"}
       labelText={title}
+      onChange={handleInput}
       onBlur={handleChange}
       value={time}
       style={{ width: width || "72px", padding: "0 0 0 1rem" }}
@@ -140,7 +140,7 @@ const TimePickerCarbon = (props) => {
     >
       <TimePickerSelect
         id={"time-picker-select-1"}
-        labelText={"Choose a time"}
+        aria-label={"Choose a time"}
         onChange={handlePeriod}
         value={period}
         disabled={isDisabled}

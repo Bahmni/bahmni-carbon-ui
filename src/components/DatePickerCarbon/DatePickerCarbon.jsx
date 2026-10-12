@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { DatePicker, DatePickerInput } from "carbon-components-react";
+import { DatePicker, DatePickerInput } from "@carbon/react";
 import moment from "moment";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";

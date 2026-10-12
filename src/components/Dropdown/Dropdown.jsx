@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import { ComboBox } from "carbon-components-react";
+import { ComboBox } from "@carbon/react";
 import Title from "../Title/Title.jsx";
 import "../../styles/carbon-conflict-fixes.scss";
 import "../../styles/carbon-theme.scss";
